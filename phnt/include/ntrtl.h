@@ -5137,6 +5137,7 @@ RtlIpv6StringToAddressExW(
     _Out_ PUSHORT Port
     );
 
+#ifndef PHNT_IP_GENERICS_DEFINED
 #define RtlIpv4AddressToString RtlIpv4AddressToStringW
 #define RtlIpv4AddressToStringEx RtlIpv4AddressToStringExW
 #define RtlIpv6AddressToString RtlIpv6AddressToStringW
@@ -5145,6 +5146,7 @@ RtlIpv6StringToAddressExW(
 #define RtlIpv4StringToAddressEx RtlIpv4StringToAddressExW
 #define RtlIpv6StringToAddress RtlIpv6StringToAddressW
 #define RtlIpv6StringToAddressEx RtlIpv6StringToAddressExW
+#endif
 
 // Time
 

@@ -124,25 +124,30 @@ typedef enum _WAIT_TYPE
 } WAIT_TYPE;
 
 // Strings
-
+#ifndef PHNT_STRINGS_DEFINED
 typedef struct _STRING
 {
     USHORT Length;
     USHORT MaximumLength;
     _Field_size_bytes_part_opt_(MaximumLength, Length) PCHAR Buffer;
 } STRING, *PSTRING, ANSI_STRING, *PANSI_STRING, OEM_STRING, *POEM_STRING;
+#else
+typedef STRING ANSI_STRING, * PANSI_STRING;
+typedef STRING OEM_STRING, * POEM_STRING;
+#endif
 
 typedef const STRING *PCSTRING;
 typedef const ANSI_STRING *PCANSI_STRING;
 typedef const OEM_STRING *PCOEM_STRING;
 
+#ifndef PHNT_STRINGS_DEFINED
 typedef struct _UNICODE_STRING
 {
     USHORT Length;
     USHORT MaximumLength;
     _Field_size_bytes_part_(MaximumLength, Length) PWCH Buffer;
 } UNICODE_STRING, *PUNICODE_STRING;
-
+#endif
 typedef const UNICODE_STRING *PCUNICODE_STRING;
 
 #define RTL_CONSTANT_STRING(s) { sizeof(s) - sizeof((s)[0]), sizeof(s), s }
